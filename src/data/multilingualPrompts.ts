@@ -1,0 +1,190 @@
+import { LanguageOption } from "../types";
+
+export const SUPPORTED_LANGUAGES: LanguageOption[] = [
+  { code: "en", label: "English", nativeLabel: "English", voiceLangCode: "en-IN" },
+  { code: "hi", label: "Hindi", nativeLabel: "हिन्दी", voiceLangCode: "hi-IN" },
+  { code: "sa", label: "Sanskrit", nativeLabel: "संस्कृतम्", voiceLangCode: "sa-IN" },
+  { code: "ta", label: "Tamil", nativeLabel: "தமிழ்", voiceLangCode: "ta-IN" },
+  { code: "te", label: "Telugu", nativeLabel: "తెలుగు", voiceLangCode: "te-IN" },
+  { code: "mr", label: "Marathi", nativeLabel: "मराठी", voiceLangCode: "mr-IN" },
+  { code: "bn", label: "Bengali", nativeLabel: "বাংলা", voiceLangCode: "bn-IN" },
+  { code: "gu", label: "Gujarati", nativeLabel: "ગુજરાતી", voiceLangCode: "gu-IN" },
+  { code: "kn", label: "Kannada", nativeLabel: "ಕನ್ನಡ", voiceLangCode: "kn-IN" },
+];
+
+export interface SymptomTag {
+  id: string;
+  name: string;
+  category: "General" | "Pain" | "Digestive / Agni" | "Respiratory" | "Skin / Twak" | "Ayush / Dosha";
+  translations: Record<string, string>;
+  isPotentialRedFlag?: boolean;
+}
+
+export const COMMON_SYMPTOMS: SymptomTag[] = [
+  {
+    id: "knee_joint_pain",
+    name: "Knee / Joint Pain",
+    category: "Pain",
+    translations: {
+      en: "Knee / Joint Pain & Stiffness",
+      hi: "घुटनों व जोड़ों में दर्द और जकड़न",
+      sa: "जानु-संधि शूल एवं स्तम्भ",
+      ta: "மூட்டு வலி மற்றும் விறைப்பு",
+      te: "కీళ్ల నొప్పులు మరియు దృఢత్వం",
+      mr: "गुडघेदुखी आणि सांधे जखडणे",
+      bn: "হাঁটু ও জয়েন্টে ব্যথা ও শক্তভাব",
+      gu: "ઘૂંટણ અને સાંધાનો દુખાવો",
+      kn: "ಮಂಡಿ ಮತ್ತು ಕೀಲು ನೋವು",
+    },
+  },
+  {
+    id: "chest_pain_severe",
+    name: "Chest Pain / Heaviness",
+    category: "Pain",
+    isPotentialRedFlag: true,
+    translations: {
+      en: "Chest Pain or Pressure / Radiating Pain",
+      hi: "छाती में भारीपन या दर्द / बांह में खिंचाव",
+      sa: "उरःशूल / हृदयगौरव",
+      ta: "மார்பு வலி அல்லது அழுத்தம்",
+      te: "ఛాతీ నొప్పి లేదా ఒత్తిడి",
+      mr: "छातीत तीव्र कळ किंवा जडपणा",
+      bn: "বুকে ব্যথা বা চাপ অনুভব",
+      gu: "છાતીમાં દુખાવો અથવા દબાણ",
+      kn: "ಎದೆ ನೋವು ಅಥವಾ ಒತ್ತಡ",
+    },
+  },
+  {
+    id: "acidity_amlapitta",
+    name: "Acidity & Bloating (Amlapitta)",
+    category: "Digestive / Agni",
+    translations: {
+      en: "Acidity, Sour Belching & Indigestion",
+      hi: "खट्टी डकारें, सीने में जलन व पेट फूलना",
+      sa: "अम्लपित्त / विदाह / अजीर्ण",
+      ta: "நெஞ்செரிச்சல் மற்றும் அஜீரணம்",
+      te: "ఎసిడిటీ మరియు కడుపు ఉబ్బరం",
+      mr: "अम्लपित्त, जळजळ आणि अपचन",
+      bn: "টক ঢেকুর ও বুকজ্বালা",
+      gu: "એસિડિટી અને ગેસની તકલીફ",
+      kn: "ಹುಳಿತೇಗು ಮತ್ತು ಅಜೀರ್ಣ",
+    },
+  },
+  {
+    id: "fever_chills",
+    name: "Fever & Body Ache (Jwara)",
+    category: "General",
+    translations: {
+      en: "Fever, Chills & Generalized Weakness",
+      hi: "बुखार, कंपकंपी और बदन दर्द",
+      sa: "ज्वर, शीतता एवं अङ्गमर्द",
+      ta: "காய்ச்சல் மற்றும் உடல் வலி",
+      te: "జ్వరం మరియు ఒంటి నొప్పులు",
+      mr: "ताप आणि अंगदुखी",
+      bn: "জ্বর এবং শরীর ব্যথা",
+      gu: "તાવ અને શરીરનો દુખાવો",
+      kn: "ಜ್ವರ ಮತ್ತು ಮೈಕೈ ನೋವು",
+    },
+  },
+  {
+    id: "cough_breathlessness",
+    name: "Cough & Breathlessness (Kasa-Shwasa)",
+    category: "Respiratory",
+    isPotentialRedFlag: true,
+    translations: {
+      en: "Persistent Cough or Shortness of Breath",
+      hi: "लगातार खांसी या सांस फूलना",
+      sa: "कास एवं श्वास कष्ट",
+      ta: "தொடர் இருமல் மற்றும் மூச்சுத்திணறல்",
+      te: "దగ్గు మరియు ఆయాసం",
+      mr: "खोकला आणि दम लागणे",
+      bn: "কাশি ও শ্বাসকষ্ট",
+      gu: "ઉધરસ અને શ્વાસ લેવામાં તકલીફ",
+      kn: "ಕೆಮ್ಮು ಮತ್ತು ಉಸಿರಾಟದ ತೊಂದರೆ",
+    },
+  },
+  {
+    id: "back_pain",
+    name: "Lower Back Pain (Kati Shoola)",
+    category: "Pain",
+    translations: {
+      en: "Lower Back Ache radiating to legs",
+      hi: "कमर दर्द व रीढ़ की हड्डी में जकड़न",
+      sa: "कटिशूल एवं पृष्ठवेदना",
+      ta: "இடுப்பு மற்றும் முதுகு வலி",
+      te: "నడుము నొప్పి",
+      mr: "कंबरदुखी आणि पाठीचा त्रास",
+      bn: "কোমরে তীব্র ব্যথা",
+      gu: "કમરનો દુખાવો",
+      kn: "ಸೊಂಟ ನೋವು",
+    },
+  },
+  {
+    id: "sleep_disturbance",
+    name: "Insomnia / Disturbed Sleep (Anidra)",
+    category: "Ayush / Dosha",
+    translations: {
+      en: "Difficulty Sleeping or Frequent Night Awakenings",
+      hi: "नींद न आना या बार-बार नींद टूटना",
+      sa: "अनिद्रा / खण्डित निद्रा",
+      ta: "தூக்கமின்மை",
+      te: "నిద్రలేమి",
+      mr: "निद्रानाश किंवा अपुरी झोप",
+      bn: "অনিদ্রা বা ঘুমের সমস্যা",
+      gu: "ઊંઘ ન આવવાની સમસ્યા",
+      kn: "ನಿದ್ರಾಹೀನತೆ",
+    },
+  },
+  {
+    id: "skin_rashes",
+    name: "Skin Itching & Rashes (Kandu / Twak Roga)",
+    category: "Skin / Twak",
+    translations: {
+      en: "Skin Allergy, Rashes or Persistent Itching",
+      hi: "त्वचा पर खुजली, चकत्ते या एलर्जी",
+      sa: "कण्डू, कुष्ठ एवं त्वचा विकार",
+      ta: "தோல் அரிப்பு மற்றும் தடிப்பு",
+      te: "చర్మం దురద మరియు దద్దుర్లు",
+      mr: "त्वचेवर खाज आणि पुरळ",
+      bn: "ত্বকের চুলকানি ও অ্যালার্জি",
+      gu: "ચામડીની એલર્જી અને ખંજવાળ",
+      kn: "ಚರ್ಮದ ತುರಿಕೆ ಮತ್ತು ದದ್ದುಗಳು",
+    },
+  },
+];
+
+export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
+  appTitle: {
+    en: "MediSaarthi AI - Patient Case-Taking System",
+    hi: "मेडि-सारथी AI - रोगी केस-टेकिंग प्रणाली",
+    sa: "मेडि-सारथी AI - रोगी इतिहास संग्रह प्रणाली",
+    ta: "மெடி-சாரதி AI - நோயாளி பரிசோதனை அமைப்பு",
+    te: "మెడి-సారథి AI - రోగి చరిత్ర సేకరణ వ్యవస్థ",
+    mr: "मेडी-सारथी AI - रुग्ण तपासणी व केस-टेकिंग प्रणाली",
+    bn: "মেডি-সারথী AI - রোগী হিস্ট্রি টেকিং সিস্টেম",
+    gu: "મેડી-સારથી AI - દર્દી કેસ-ટેકિંગ સિસ્ટમ",
+    kn: "ಮೆಡಿ-ಸಾರಥಿ AI - ರೋಗಿಯ ಇತಿಹಾಸ ಸಂಗ್ರಹ ವ್ಯವಸ್ಥೆ",
+  },
+  sihBadge: {
+    en: "Smart India Hackathon 2026 | SIH26047 | Ministry of Ayush - AIIA",
+    hi: "स्मार्ट इंडिया हैकथॉन 2026 | SIH26047 | आयुष मंत्रालय - अखिल भारतीय आयुर्वेद संस्थान",
+    sa: "स्मार्ट भारत नवोन्मेषः २०२६ | आयुष मन्त्रालयः - अखिल भारतीय आयुर्वेद संस्थानम्",
+    ta: "ஸ்மார்ட் இந்தியா ஹேக்கத்தான் 2026 | ஆயுஷ் அமைச்சகம்",
+    te: "స్మార్ట్ ఇండియా హ్యాకథాన్ 2026 | ఆయుష్ మంత్రిత్వ శాఖ",
+    mr: "स्मार्ट इंडिया हॅकेथॉन २०२६ | आयुष मंत्रालय",
+    bn: "স্মার্ট ইন্ডিয়া হ্যাকাথন ২০২৬ | আয়ুষ মন্ত্রক",
+    gu: "સ્માર્ટ ઇન્ડિયા હેકાથોન 2026 | આયુષ મંત્રાલય",
+    kn: "ಸ್ಮಾರ್ಟ್ ಇಂಡಿಯಾ ಹ್ಯಾಕಥಾನ್ 2026 | ಆಯುಷ್ ಸಚಿವಾಲಯ",
+  },
+  welcomeGreeting: {
+    en: "Namaste! I am MediSaarthi, your AI Clinical Intake Assistant. I will collect your medical history to help your doctor treat you better. Please speak in your preferred language or tap below.",
+    hi: "नमस्ते! मैं मेडि-सारथी हूँ, आपका AI स्वास्थ्य सहायक। डॉक्टर से मिलने से पहले मैं आपके स्वास्थ्य की जानकारी संकलित करूँगा ताकि आपका समय बचे और बेहतर इलाज हो सके। आप बोलकर या चुनकर उत्तर दे सकते हैं।",
+    sa: "नमस्ते! अहं मेडि-सारथी अस्मि, भवतः स्वास्थ्य सहायकः। चिकित्सकेन सह परामर्शात् पूर्वं भवतां रोगविवरणं संगृह्णामि।",
+    ta: "வணக்கம்! நான் மெடி-சாரதி. மருத்துவரை சந்திப்பதற்கு முன் உங்கள் உடல்நல விவரங்களை எளிதாக பதிவு செய்ய உதவுகிறேன்.",
+    te: "నమస్తే! నేను మెడి-సారథిని. వైద్యుడిని సంప్రదించడానికి ముందు మీ ఆరోగ్య చరిత్రను నమోదు చేసుకోవడానికి సహాయం చేస్తాను.",
+    mr: "नमस्ते! मी मेडी-सारथी आहे, आपला AI क्लिनिकल सहाय्यक. डॉक्टरांच्या भेटीपूर्वी मी आपल्या आरोग्याची माहिती संकलित करेन.",
+    bn: "নমস্কার! আমি মেডি-সারথী, আপনার স্বাস্থ্য সহকারী। ডাক্তারের পরামর্শের পূর্বে আপনার চিকিৎসার ইতিহাস লিপিবদ্ধ করতে সাহায্য করব।",
+    gu: "નમસ્તે! હું મેડી-સારથી છું, તમારો AI હેલ્થ આસિસ્ટન્ટ. ડોક્ટર પાસે જતા પહેલા તમારી તકલીફો નોંધવામાં મદદ કરીશ.",
+    kn: "ನಮಸ್ಕಾರ! ನಾನು ಮೆಡಿ-ಸಾರಥಿ, ನಿಮ್ಮ AI ಕ್ಲಿನಿಕಲ್ ಸಹಾಯಕ. ವೈದ್ಯರ ಭೇಟಿಗೆ ಮುನ್ನ ನಿಮ್ಮ ಆರೋಗ್ಯ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತೇನೆ.",
+  },
+};

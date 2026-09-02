@@ -1,0 +1,6 @@
+{
+  "name": "MediSaarthi AI - Patient Case-Taking System",
+  "description": "AI-powered multilingual clinical case-taking assistant with voice/touch intake, prescription OCR, red-flag alert triage, and doctor-ready Ayush & Allopathy structured summaries.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
